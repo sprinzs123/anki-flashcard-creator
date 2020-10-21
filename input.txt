@@ -1,0 +1,35 @@
+Question 1: Incorrect
+You are migrating a mission-critical application from your on-premises data centre to Google Cloud, and you need to ensure unhealthy compute instances within the autoscaled managed instances group are recreated automatically. What should you do?
+Explanation
+Our requirement is to ensure unhealthy VMs are recreated.
+
+Select Multi-Zone instead of Single-Zone when creating the Managed Instance Group. is not right.
+You can create two types of MIGs: A zonal MIG, which deploys instances to a single zone and a regional MIG, which deploys instances to multiple zones across the same region. However, this doesn't help with recreating unhealthy VMs.
+Ref: https://cloud.google.com/compute/docs/instance-groups
+
+In the Instance Template, add the label health-check. is not right.
+Metadata entries are key-value pairs and do not influence any other behavior.
+Ref: https://cloud.google.com/compute/docs/storing-retrieving-metadata
+
+In the Instance Template, add a startup script that sends a heartbeat to the metadata server. is not right.
+The startup script is executed only at the time of startup. Whereas we need something like a liveness check that monitors the status of the server periodically to identify if the VM is unhealthy. So this is not going to work.
+Ref: https://cloud.google.com/compute/docs/startupscript
+
+Create a health check on port 443 and use that when creating the Managed Instance Group. is the right answer.
+To improve the availability of your application and to verify that your application is responding, you can configure an auto-healing policy for your managed instance group (MIG). An auto-healing policy relies on an application-based health check to verify that an application is responding as expected. If the auto healer determines that an application isn't responding, the managed instance group automatically recreates that instance. Since our application is a HTTPS web application, we need to set up our health check on port 443 which is the standard port for HTTPS.
+Ref: https://cloud.google.com/compute/docs/instance-groups/autohealing-instances-in-migs
+Question 2: Incorrect
+Your company wants to move all documents from a secure internal NAS drive to a Google Cloud Storage (GCS) bucket. The data contains personally identifiable information (PII) and sensitive customer information. Your company tax auditors need access to some of these documents. What security strategy would you recommend on GCS?
+Explanation
+Use signed URLs to generate time-bound access to objects. is not right.
+When dealing with sensitive customer information such as PII, using signed URLs is not a great idea as anyone with access to the URL has access to PII data. Signed URLs provide time-limited resource access to anyone in possession of the URL, regardless of whether they have a Google account. With PII Data, we want to be sure who has access and signed URLs don't guarantee that.
+Ref: https://cloud.google.com/storage/docs/access-control/signed-urls
+
+Grant IAM read-only access to users, and use default ACLs on the bucket. is not right.
+We do not need to grant all IAM read-only access to this sensitive data. Just the users who need access to sensitive/PII data should be provided access to this data.
+
+Create randomized bucket and object names. Enable public access, but only provide specific file URLs to people who do not have Google accounts and need access. is not right.
+Enabling public access to the buckets and objects makes them visible to everyone. There are a number of scanning tools out in the market with the sole purpose of identifying buckets/objects that can be reached publicly. Should one of these tools be used by a bad actor to find out our public bucket/objects, it would result in a security breach.
+
+Grant no Google Cloud Identity and Access Management (Cloud IAM) roles to users, and use granular ACLs on the bucket. is the right answer.
+We start with no explicit access to any of the IAM users, and the bucket ACLs can then control which users can access what objects. This is the most secure way of ensuring just the people who require access to the bucket are provided with access. We block everyone from accessing the bucket and explicitly provided access to specific users through ACLs.
