@@ -1,6 +1,6 @@
 import random
 
-with open('input.txt', encoding="utf8") as questions:
+with open('large.txt', encoding="utf8") as questions:
     fullText = questions.read()
 text = fullText
 
@@ -33,18 +33,18 @@ class GatherData:
     def __init__(self, question):
         self.question = question
 
-    def get_question_end(self):
-        return self.question.find('Explanation')
-
     def get_question(self):
-        question_start = self.question.find('\n')
-        question_end = self.get_question_end()
-        end_question = self.get_question_end()
-        return self.question[question_start:question_end]
+        lst_break = self.question.split('\n')
+        return lst_break[1]
+
 
     def get_explanation(self):
-        start = self.get_question_end()
-        return self.question[start:]
+        lst_break = self.question.split('\n')
+        explanation_list = lst_break[2:]
+        explanation_str = ''
+        for line in explanation_list:
+            explanation_str += line + '\n'
+        return explanation_str
 
     def get_wrong_questions(self):
         question_lst = []
@@ -77,16 +77,38 @@ class GatherData:
         return all_questions
 
 
+def make_question(question, answers):
+    str_question = ''
+    str_question += '"' + question + '\n' + '\n'
+    for answer in answers:
+        str_question += '-' + answer + '\n'
+    str_question += '"'
+    return str_question
+
+
+def make_answer(answer, description):
+    str_answer = ''
+    str_answer += '"' + answer + '\n' + '\n'
+    str_answer += description
+    str_answer += '"'
+    return str_answer
+
 
 # trigers class that finds all relevant info
 def record_data():
+    full_set = ''
     found_question = make_questions()
-    for question in found_question:
-        finding = GatherData(question)
-        finding.get_question_end()
-        full_question = finding.get_question()
-        full_expanation = finding.get_explanation()
-        answer = finding.get_correct_question()
-        all_questions = finding.randomize_questions()
-
+    for count, question in enumerate(found_question):
+        if '. is the right answer.' in question:
+            print('working on ' + str(count + 1))
+            finding = GatherData(question)
+            full_question = finding.get_question()
+            all_questions = finding.randomize_questions()
+            full_expanation = finding.get_explanation()
+            answer = finding.get_correct_question()[0]
+            question_card = make_question(full_question, all_questions)
+            answer_card = make_answer(answer, full_expanation)
+            full_card = question_card + ';' + answer_card
+            full_set += full_card
+        print(full_set)
 record_data()
