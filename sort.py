@@ -1,6 +1,6 @@
 import random
 
-with open('large.txt', encoding="utf8") as questions:
+with open('input.txt', encoding="utf8") as questions:
     fullText = questions.read()
 text = fullText
 
@@ -37,14 +37,14 @@ class GatherData:
         lst_break = self.question.split('\n')
         return lst_break[1]
 
-
+    # need to strip \n bc for loop makes unnecessary line break
     def get_explanation(self):
         lst_break = self.question.split('\n')
         explanation_list = lst_break[2:]
         explanation_str = ''
         for line in explanation_list:
             explanation_str += line + '\n'
-        return explanation_str
+        return explanation_str.rstrip()
 
     def get_wrong_questions(self):
         question_lst = []
@@ -82,6 +82,7 @@ def make_question(question, answers):
     str_question += '"' + question + '\n' + '\n'
     for answer in answers:
         str_question += '-' + answer + '\n'
+
     str_question += '"'
     return str_question
 
@@ -100,15 +101,15 @@ def record_data():
     found_question = make_questions()
     for count, question in enumerate(found_question):
         if '. is the right answer.' in question:
-            print('working on ' + str(count + 1))
+            # print('working on ' + str(count + 1))
             finding = GatherData(question)
             full_question = finding.get_question()
             all_questions = finding.randomize_questions()
-            full_expanation = finding.get_explanation()
+            full_explanation = finding.get_explanation()
             answer = finding.get_correct_question()[0]
             question_card = make_question(full_question, all_questions)
-            answer_card = make_answer(answer, full_expanation)
-            full_card = question_card + ';' + answer_card
+            answer_card = make_answer(answer, full_explanation)
+            full_card = question_card + ';' + answer_card + '\n'
             full_set += full_card
-        print(full_set)
+    print(full_set)
 record_data()
