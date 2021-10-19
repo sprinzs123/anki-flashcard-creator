@@ -1,3 +1,5 @@
+# this is for when when have question and have multiple answers like at test
+# need random because at test first answer was correct
 import random
 
 with open('input.txt', encoding="utf8") as questions:
