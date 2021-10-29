@@ -11,7 +11,13 @@ question_answer_separate = '='
 question_index = 0  
 answer_index = 1
 
-with open("C:\\Users\cooke\\Desktop\\projects\\anki\\anki-flashcard-creator\\input.txt", encoding="utf8") as questions:
+
+# location of input output files 
+# can modify depending on folder location
+input_file_path= "C:\\Users\\cooke\\Desktop\\projects\\anki\\anki-flashcard-creator\\input.txt"
+output_file_path = 'C:\\Users\\cooke\\Desktop\\projects\\anki\\anki-flashcard-creator\\done_cards.txt'
+
+with open(input_file_path, encoding="utf8") as questions:
     fullText = questions.read()
 text = fullText
 
@@ -35,12 +41,19 @@ class QuestionFound:
 
     # for loop over answers and questions and format string
     # so that can get into anki flashcard format
-    def get_str_output(self):        
+    def get_str_output(self): 
+        output_file = open(output_file_path,"w+")
+        all_cards_text = ""       
         for i in range(len(self.answer_list)):
             question_str = '"' + self.question_list[i] + '"'
             answer_str = '"' + self.answer_list[i] + '"'
-            full_card = question_str + ';' + answer_str
-            print(full_card)
+            full_card = question_str + ';' + answer_str + '\n'
+            all_cards_text += full_card
+        output_file.write(all_cards_text)
+        output_file.close()
+        print(str(len(self.question_list)) + ' cards recoded')
+        
+            
 
 
 new_cards = QuestionFound(text)
