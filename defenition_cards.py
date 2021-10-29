@@ -2,24 +2,28 @@
 # question answer is separated by line break and Q and A separated by " - "
 # "deffininion - answer" format for all questions
 
-import os
+
+### Configuration setting ###
 
 # delimeters by which flashcard are going to be created
 # global variables, can be changed depending on the format
-questions_separate = '\n'
+questions_separate = ';'
 question_answer_separate = '='
 question_index = 0  
 answer_index = 1
 
 
-# location of input output files 
+# location of input and output files 
 # can modify depending on folder location
 input_file_path= "C:\\Users\\cooke\\Desktop\\projects\\anki\\anki-flashcard-creator\\input.txt"
 output_file_path = 'C:\\Users\\cooke\\Desktop\\projects\\anki\\anki-flashcard-creator\\done_cards.txt'
 
+# file that reading information from
 with open(input_file_path, encoding="utf8") as questions:
     fullText = questions.read()
 text = fullText
+
+### end of configuration settings
 
 
 class QuestionFound:
@@ -42,20 +46,23 @@ class QuestionFound:
     # for loop over answers and questions and format string
     # so that can get into anki flashcard format
     def get_str_output(self): 
-        output_file = open(output_file_path,"w+")
         all_cards_text = ""       
         for i in range(len(self.answer_list)):
             question_str = '"' + self.question_list[i] + '"'
             answer_str = '"' + self.answer_list[i] + '"'
             full_card = question_str + ';' + answer_str + '\n'
             all_cards_text += full_card
-        output_file.write(all_cards_text)
-        output_file.close()
-        print(str(len(self.question_list)) + ' cards recoded')
+        print(str(len(self.question_list)) + ' cards found')
+        return all_cards_text
         
+    # write the output of all string representation of flash cards to a text file
+    # output file path is in configurations
+    def write_to_file(self):
+        with open(output_file_path, 'w', encoding='utf-8') as f:
+            f.write(self.get_str_output())
             
 
 
 new_cards = QuestionFound(text)
 new_cards.separate_item()
-new_cards.get_str_output()
+new_cards.write_to_file()
