@@ -8,6 +8,8 @@ import os
 # global variables, can be changed depending on the format
 questions_separate = '\n'
 question_answer_separate = '='
+question_index = 0  
+answer_index = 1
 
 with open("C:\\Users\cooke\\Desktop\\projects\\anki\\anki-flashcard-creator\\input.txt", encoding="utf8") as questions:
     fullText = questions.read()
@@ -28,8 +30,8 @@ class QuestionFound:
         for full_flashcard in broken_text:
             question_answer = full_flashcard.split(question_answer_separate)
             if len(question_answer) == 2:                
-                self.question_list.append(question_answer[0])
-                self.answer_list.append(question_answer[1])
+                self.question_list.append(question_answer[question_index])
+                self.answer_list.append(question_answer[answer_index])
 
     # for loop over answers and questions and format string
     # so that can get into anki flashcard format
