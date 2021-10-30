@@ -1,0 +1,38 @@
+
+33 Which name is assigned to the transport layer PDU?
+
+    Correct
+    Response
+    Your
+    Response
+        data
+        bits
+        packet
+        frame
+        Correct Response
+        segment
+
+Application data is passed down the protocol stack on its way to be transmitted across the network media. During the process, various protocols add information to it at each level. At each stage of the process, a PDU (protocol data unit) has a different name to reflect its new functions. The PDUs are named according to the protocols of the TCP/IP suite:
+
+    Data - The general term for the PDU used at the application layer.
+    Segment - transport layer PDU
+    Packet - network layer PDU
+    Frame – data link layer PDU
+    Bits - A physical layer PDU used when physically transmitting data over the medium
+
+
+42 Which two OSI model layers have the same functionality as a single layer of the TCP/IP model? (Choose two.)
+
+    Correct
+    Response
+    Your
+    Response
+        network
+        transport
+        session
+        Correct Response
+        physical
+        Correct Response
+        data link
+
+The OSI data link and physical layers together are equivalent to the TCP/IP network access layer. The OSI transport layer is functionally equivalent to the TCP/IP transport layer, and the OSI network layer is equivalent to the TCP/IP internet layer. The OSI application, presentation, and session layers are functionally equivalent to the application layer within the TCP/IP model. 
