@@ -1,30 +1,196 @@
-
-33 Which name is assigned to the transport layer PDU?
-
-    Correct
-    Response
-    Your
-    Response
-        data
-        bits
-        packet
-        frame
-        Correct Response
-        segment
+9 What is one advantage that the IPv6 simplified header offers over IPv4?
 
 
+-smaller-sized header
+-little requirement for processing checksums
+-efficient packet handling
+-smaller-sized source and destination IP addresses
+=        efficient packet handling;
 
-42 Which two OSI model layers have the same functionality as a single layer of the TCP/IP model? (Choose two.)
+12 What information does the loopback test provide?
 
-    Correct
-    Response
-    Your
-    Response
-        network
-        transport
-        session
-        Correct Response
-        physical
-        Correct Response
-        data link
 
+-The device has end-to-end connectivity.
+-The TCP/IP stack on the device is working correctly.
+-The device has the correct IP address on the network.
+-DHCP is working correctly.
+-The Ethernet cable is working correctly.
+=        The TCP/IP stack on the device is working correctly.;
+
+14 How do hosts ensure that their packets are directed to the correct network destination?
+
+
+-They always direct their packets to the default gateway, which will be responsible for the packet delivery.
+-They search in their own local routing table for a route to the network destination address and pass this information to the default gateway.
+-They send a query packet to the default gateway asking for the best route.
+-They have to keep their own local routing table that contains a route to the loopback interface, a local network route, and a remote default route.​
+=        They have to keep their own local routing table that contains a route to the loopback interface, a local network route, and a remote default route.​;
+
+16 What statement describes the function of the Address Resolution Protocol?
+
+
+-ARP is used to discover the IP address of any host on a different network.
+-ARP is used to discover the MAC address of any host on a different network.
+-ARP is used to discover the IP address of any host on the local network.
+-ARP is used to discover the MAC address of any host on the local network.
+=        ARP is used to discover the MAC address of any host on the local network.;
+
+19 Which destination address is used in an ARP request frame?
+
+
+-the physical address of the destination host
+-0.0.0.0
+-FFFF.FFFF.FFFF
+-255.255.255.255
+-AAAA.AAAA.AAAA
+=        FFFF.FFFF.FFFF;
+
+33 A router boots and enters setup mode. What is the reason for this?
+
+
+-The configuration file is missing from NVRAM.
+-Cisco IOS is missing from flash memory.
+-The POST process has detected hardware failure.
+-The IOS image is corrupt.
+=        The configuration file is missing from NVRAM.;
+
+35 What happens when the transport input ssh command is entered on the switch vty lines?
+
+
+-Communication between the switch and remote users is encrypted.
+-The switch requires remote connections via a proprietary client software.
+-The SSH client on the switch is enabled.
+-The switch requires a username/password combination for remote access.
+=        Communication between the switch and remote users is encrypted.;
+
+13 What routing table entry has a next hop address associated with a destination network?
+
+
+-directly-connected routes
+-local routes
+-remote routes
+-C and L source routes
+=        remote routes;
+
+16 What statement describes the function of the Address Resolution Protocol?
+
+
+-ARP is used to discover the IP address of any host on the local network.
+-ARP is used to discover the MAC address of any host on a different network.
+-ARP is used to discover the IP address of any host on a different network.
+-ARP is used to discover the MAC address of any host on the local network.
+=        ARP is used to discover the MAC address of any host on the local network.;
+
+32 What are two functions of NVRAM? (Choose two.)
+
+
+-to store the startup configuration file
+-to contain the running configuration file
+-to store the routing table
+-to retain contents when power is removed
+-to store the ARP table
+=        to store the startup configuration file
+        to retain contents when power is removed;
+
+33 A router boots and enters setup mode. What is the reason for this?
+
+
+-The IOS image is corrupt.
+-The configuration file is missing from NVRAM.
+-The POST process has detected hardware failure.
+-Cisco IOS is missing from flash memory.
+=        The configuration file is missing from NVRAM.;
+
+59 What property of ARP allows hosts on a LAN to send traffic to remote networks?
+
+
+-ARP replies are broadcast on the network when a host receives an ARP request.
+-The destination MAC address FF-FF-FF-FF-FF-FF appears in the header of the Ethernet frame.
+-The source MAC address appears in the header of the Ethernet frame.
+-Local hosts learn the MAC address of the default gateway.
+=        Local hosts learn the MAC address of the default gateway.;
+
+16 What statement describes the function of the Address Resolution Protocol?
+
+
+-ARP is used to discover the IP address of any host on the local network.
+-ARP is used to discover the MAC address of any host on a different network.
+-ARP is used to discover the IP address of any host on a different network.
+-ARP is used to discover the MAC address of any host on the local network.
+=        ARP is used to discover the MAC address of any host on the local network.;
+
+32 What are two functions of NVRAM? (Choose two.)
+
+
+-to store the startup configuration file
+-to contain the running configuration file
+-to store the routing table
+-to retain contents when power is removed
+-to store the ARP table
+=        to store the startup configuration file
+        to retain contents when power is removed;
+
+33 A router boots and enters setup mode. What is the reason for this?
+
+
+-The IOS image is corrupt.
+-The configuration file is missing from NVRAM.
+-The POST process has detected hardware failure.
+-Cisco IOS is missing from flash memory.
+=        The configuration file is missing from NVRAM.;
+
+59 What property of ARP allows hosts on a LAN to send traffic to remote networks?
+
+
+-ARP replies are broadcast on the network when a host receives an ARP request.
+-The destination MAC address FF-FF-FF-FF-FF-FF appears in the header of the Ethernet frame.
+-The source MAC address appears in the header of the Ethernet frame.
+-Local hosts learn the MAC address of the default gateway.
+=        Local hosts learn the MAC address of the default gateway.;
+
+13 What routing table entry has a next hop address associated with a destination network?
+
+
+-directly-connected routes
+-local routes
+-remote routes
+-C and L source routes
+=        remote routes;
+
+16 What statement describes the function of the Address Resolution Protocol?
+
+
+-ARP is used to discover the IP address of any host on the local network.
+-ARP is used to discover the MAC address of any host on a different network.
+-ARP is used to discover the IP address of any host on a different network.
+-ARP is used to discover the MAC address of any host on the local network.
+=        ARP is used to discover the MAC address of any host on the local network.;
+
+32 What are two functions of NVRAM? (Choose two.)
+
+
+-to store the startup configuration file
+-to contain the running configuration file
+-to store the routing table
+-to retain contents when power is removed
+-to store the ARP table
+=        to store the startup configuration file
+        to retain contents when power is removed;
+
+33 A router boots and enters setup mode. What is the reason for this?
+
+
+-The IOS image is corrupt.
+-The configuration file is missing from NVRAM.
+-The POST process has detected hardware failure.
+-Cisco IOS is missing from flash memory.
+=        The configuration file is missing from NVRAM.;
+
+59 What property of ARP allows hosts on a LAN to send traffic to remote networks?
+
+
+-ARP replies are broadcast on the network when a host receives an ARP request.
+-The destination MAC address FF-FF-FF-FF-FF-FF appears in the header of the Ethernet frame.
+-The source MAC address appears in the header of the Ethernet frame.
+-Local hosts learn the MAC address of the default gateway.
+=        Local hosts learn the MAC address of the default gateway.;

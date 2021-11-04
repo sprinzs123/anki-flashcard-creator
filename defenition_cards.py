@@ -46,14 +46,17 @@ class QuestionFound:
     # for loop over answers and questions and format string
     # so that can get into anki flashcard format
     def get_str_output(self): 
-        all_cards_text = ""       
+        all_cards_list = []       
         for i in range(len(self.answer_list)):
-            question_str = '"' + self.question_list[i] + '"'
-            answer_str = '"' + self.answer_list[i] + '"'
-            full_card = question_str + ';' + answer_str + '\n'
-            all_cards_text += full_card
-        print(str(len(self.question_list)) + ' cards found')
-        return all_cards_text
+            question_str = '"' + self.question_list[i].strip() + '"'
+            answer_str = '"' + self.answer_list[i].strip() + '"'
+            full_card = question_str + ';' + answer_str + '\n\n'
+            all_cards_list.append(full_card)
+
+        
+        unique_cards = list(set(all_cards_list))
+        print(str(len(unique_cards)) + ' cards found')
+        return ''.join(unique_cards)
         
     # write the output of all string representation of flash cards to a text file
     # output file path is in configurations
